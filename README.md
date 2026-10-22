@@ -1,210 +1,110 @@
-# \# PulseLab — ECG Arrhythmia Detection
+# PulseLab — ECG Arrhythmia Detection
 
-# 
+![PulseLab dashboard](screenshots/dashboard.png)
 
-# PulseLab is an educational machine learning project for classifying ECG heartbeat segments using a 1D Convolutional Neural Network (CNN). It includes a Streamlit web interface for interactive ECG signal exploration and model predictions.
+*PulseLab Streamlit dashboard — ECG upload, model status, and signal preview.*
 
-# 
+PulseLab is an educational machine learning project for classifying ECG heartbeat segments using a 1D Convolutional Neural Network (CNN). It includes a Streamlit web interface for interactive ECG signal exploration and model predictions.
 
-# \## Features
+## Features
 
-# 
+- ECG signal visualization and filtering
+- Heartbeat segmentation for model inference
+- Five grouped heartbeat classes: N, S, V, F, and Q
+- 1D CNN built with TensorFlow/Keras
+- Interactive Streamlit dashboard
+- Model evaluation using accuracy, precision, recall, F1-score, and a confusion matrix
 
-# \- ECG signal visualization and filtering
+## Tech Stack
 
-# \- Heartbeat segmentation for model inference
+- Python
+- TensorFlow / Keras
+- Streamlit
+- NumPy, Pandas, SciPy
+- WFDB
+- scikit-learn
+- Matplotlib
 
-# \- Five grouped heartbeat classes: N, S, V, F, and Q
+## Project Structure
 
-# \- 1D CNN built with TensorFlow/Keras
+```text
+PulseLab_ECG_Web_App/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── screenshots/
+    └── dashboard.png
+```
 
-# \- Interactive Streamlit dashboard
+## Getting Started
 
-# \- Model evaluation using accuracy, precision, recall, F1-score, and a confusion matrix
+### 1. Clone the repository
 
-# 
+```bash
+git clone https://github.com/AmanGupta0835/pulselab-ecg-arrhythmia-detection.git
+cd pulselab-ecg-arrhythmia-detection
+```
 
-# \## Tech Stack
+### 2. Create a virtual environment (recommended)
 
-# 
+```bash
+python -m venv .venv
+```
 
-# \- Python
+Activate it on Windows:
 
-# \- TensorFlow / Keras
+```bash
+.venv\Scripts\activate
+```
 
-# \- Streamlit
+### 3. Install dependencies
 
-# \- NumPy, Pandas, SciPy
+```bash
+python -m pip install -r requirements.txt
+```
 
-# \- WFDB
+### 4. Run the app
 
-# \- scikit-learn
+```bash
+python -m streamlit run app.py
+```
 
-# \- Matplotlib
+Upload a numeric ECG CSV and provide a compatible trained `.keras` model when prompted.
 
-# 
+## Model Evaluation
 
-# \## Project Structure
+The prototype was evaluated on a held-out test split in the accompanying training notebook.
 
-# 
+| Metric | Test Score |
+|---|---:|
+| Accuracy | 0.7897 |
+| Macro Precision | 0.3666 |
+| Macro Recall | 0.4357 |
+| Macro F1-score | 0.3572 |
+| Weighted F1-score | 0.8388 |
 
-# ```text
+Accuracy alone does not describe performance across all classes. The relatively low macro F1-score indicates that performance across classes is uneven and needs further investigation.
 
-# PulseLab\_ECG\_Web\_App/
+## Important Limitations
 
-# ├── app.py
+- This project is an educational prototype, not a medical device or diagnostic tool.
+- The web app uses approximate peak detection and heartbeat segmentation for interactive demonstrations.
+- Web-app predictions may differ from the notebook's held-out test evaluation.
+- Results depend on the quality, sampling frequency, and format of the uploaded ECG signal.
+- The grouped heartbeat labels are N, S, V, F, and Q.
 
-# ├── requirements.txt
+## Dataset
 
-# ├── README.md
+The training notebook uses the MIT-BIH Arrhythmia Database through WFDB. Please follow the dataset provider's terms and citation requirements when using or redistributing the data. The dataset itself is not included in this repository.
 
-# └── .gitignore
+## Future Improvements
 
-# ```
+- Improve heartbeat detection and segmentation
+- Investigate class imbalance and per-class performance
+- Add reproducible evaluation and sample visualizations
+- Improve input validation and sampling-frequency handling
 
-# 
+---
 
-# \## Getting Started
-
-# 
-
-# \### 1. Clone the repository
-
-# 
-
-# ```bash
-
-# git clone https://github.com/AmanGupta0835/pulselab-ecg-arrhythmia-detection.git
-
-# cd pulselab-ecg-arrhythmia-detection
-
-# ```
-
-# 
-
-# \### 2. Create a virtual environment (recommended)
-
-# 
-
-# ```bash
-
-# python -m venv .venv
-
-# ```
-
-# 
-
-# Activate it on Windows:
-
-# 
-
-# ```bash
-
-# .venv\\Scripts\\activate
-
-# ```
-
-# 
-
-# \### 3. Install dependencies
-
-# 
-
-# ```bash
-
-# python -m pip install -r requirements.txt
-
-# ```
-
-# 
-
-# \### 4. Run the app
-
-# 
-
-# ```bash
-
-# python -m streamlit run app.py
-
-# ```
-
-# 
-
-# Upload a numeric ECG CSV and provide a compatible trained `.keras` model when prompted.
-
-# 
-
-# \## Model Evaluation
-
-# 
-
-# The prototype was evaluated on a held-out test split in the accompanying training notebook.
-
-# 
-
-# | Metric | Test Score |
-
-# |---|---:|
-
-# | Accuracy | 0.7897 |
-
-# | Macro Precision | 0.3666 |
-
-# | Macro Recall | 0.4357 |
-
-# | Macro F1-score | 0.3572 |
-
-# | Weighted F1-score | 0.8388 |
-
-# 
-
-# Accuracy alone does not describe performance across all classes. The relatively low macro F1-score indicates that performance across classes is uneven and needs further investigation.
-
-# 
-
-# \## Important Limitations
-
-# 
-
-# \- This project is an educational prototype, not a medical device or diagnostic tool.
-
-# \- The web app uses approximate peak detection and heartbeat segmentation for interactive demonstrations.
-
-# \- Web-app predictions may differ from the notebook's held-out test evaluation.
-
-# \- Results depend on the quality, sampling frequency, and format of the uploaded ECG signal.
-
-# \- The grouped heartbeat labels are N, S, V, F, and Q.
-
-# 
-
-# \## Dataset
-
-# 
-
-# The training notebook uses the MIT-BIH Arrhythmia Database through WFDB. Please follow the dataset provider's terms and citation requirements when using or redistributing the data. The dataset itself is not included in this repository.
-
-# 
-
-# \## Future Improvements
-
-# 
-
-# \- Improve heartbeat detection and segmentation
-
-# \- Investigate class imbalance and per-class performance
-
-# \- Add reproducible evaluation and sample visualizations
-
-# \- Improve input validation and sampling-frequency handling
-
-# 
-
-# \---
-
-# 
-
-# \*\*PulseLab\*\* — an educational ECG machine learning project.
-
-
-
+**PulseLab** — an educational ECG machine learning project.
