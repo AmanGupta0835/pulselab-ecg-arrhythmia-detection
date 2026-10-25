@@ -25,6 +25,7 @@ env/
 mitdb/
 data/
 datasets/
+output/
 
 # Generated outputs
 *.csv
@@ -35,3 +36,6 @@ datasets/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local files
+desktop.ini
