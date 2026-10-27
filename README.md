@@ -61,13 +61,13 @@ Activate it on Windows:
 ### 3. Install dependencies
 
 ```bash
-python -m pip install -r requirements.txt
+py -m pip install -r requirements.txt
 ```
 
 ### 4. Run the app
 
 ```bash
-python -m streamlit run app.py
+py -m streamlit run app.py
 ```
 
 Upload a numeric ECG CSV and provide a compatible trained `.keras` model when prompted.
